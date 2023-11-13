@@ -1,0 +1,67 @@
+# Задание 6
+def calc(n):
+    n_1 = str(n) * 2
+    n_2 = str(n) * 3
+    return n + int(n_1) + int(n_2)
+
+
+print(calc(int(input('Введите целое число:'))))
+
+
+def pr_func(x):
+    while -10 <= x <= 10:
+        if -5 <= x <= 5:
+            y = x ** 2
+        elif x < -5:
+            y = 2 * x - 1
+        elif x > 5:
+            y = x * 2
+        return y
+
+
+print(pr_func(int(input('Введите значение x:'))))
+
+
+def func_1(element):
+    len_count = 0
+    alpha = 0
+    digit = 0
+    odd_nums = 0
+    if type(element) == tuple:
+        for item in element:
+            if type(item) == str:
+                len_count += len(item)
+            else:
+                continue
+        return f'В кортеже {element} длина всех слов равна {len_count}'
+    elif type(element) == list:
+        for item in element:
+            if type(item) == str:
+                for let in item:
+                    if let.isalpha():
+                        alpha += 1
+            elif type(item) == int:
+                digit += 1
+        return f'В списке {element} количество букв равно {alpha}, количество чисел равно {digit}'
+    elif type(element) == int:
+        for item in str(element):
+            if int(item) % 2 != 0:
+                odd_nums += 1
+            else:
+                continue
+        return f'Число {element} имеет {odd_nums} нечетных цифр'
+    elif type(element) == str:
+        len_str = 0
+        for item in element:
+            len_str += item.isalpha()
+        return f'В строке {element} {len_str} букв'
+
+
+tup = (1, 'sldfjsl', 123, 'sldkjfsljdf')
+lst = [15, 'dflsfdl', 23423, 'wfjlkdf sfsdlk sldfkjs']
+numb = 248971
+string_1 = 'sklfj3234 sdlfk234234'
+print(func_1(tup))
+print(func_1(lst))
+print(func_1(numb))
+print(func_1(string_1))
